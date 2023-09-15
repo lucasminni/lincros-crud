@@ -1,0 +1,6 @@
+br\com\Controller\Bean\ItemBean.class
+br\com\Model\Util\JPAUtil.class
+br\com\Model\Entity\Item.class
+br\com\Model\DAO\GenericDAO.class
+br\com\Controller\Bean\LancamentoBean.class
+br\com\Model\Entity\Lancamento.class

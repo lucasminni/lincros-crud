@@ -6,7 +6,8 @@ import javax.persistence.*;
 public class Item {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "oid_item")
     private Long oid;
 
     @Column(name = "descricao")

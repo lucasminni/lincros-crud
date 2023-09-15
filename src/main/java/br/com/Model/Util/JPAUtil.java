@@ -6,17 +6,19 @@ import javax.persistence.Persistence;
 
 public class JPAUtil {
 
-    private static EntityManagerFactory entityManagerFactory;
+    private static EntityManagerFactory factory;
 
     static {
-        if (entityManagerFactory == null) {
-            entityManagerFactory = Persistence.createEntityManagerFactory("lincros");
+        if (factory == null) {
+            factory = Persistence.createEntityManagerFactory("lincros");
         }
     }
 
-    public static EntityManager getEntityManager() {
-        return entityManagerFactory.createEntityManager();
+    public static EntityManager getEnityManager() {
+        return factory.createEntityManager();
     }
 
-
+    public static Object getPrimaryKey(Object entity) {
+        return factory.getPersistenceUnitUtil().getIdentifier(entity);
+    }
 }

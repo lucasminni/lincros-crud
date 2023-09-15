@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>LINCROS</title>
+</h:head>
+
+<h:link outcome="home.xhtml">Voltar</h:link>
+
+<h:body>
+
+    <h:form id="formHomeCadastrar">
+
+        <h3>Cadastro de lançamentos</h3>
+
+        <h:panelGrid column="2">
+
+            <h:outputLabel value="Data inicial"/>
+            <h:inputText value="#{lancamentoBean.lancamento.dataInicial}"/>
+
+            <h:outputLabel value="Data final"/>
+            <h:inputText value="#{lancamentoBean.lancamento.dataFinal}"/>
+
+            <h:outputLabel value="Observações"/>
+            <h:inputTextarea value="#{lancamentoBean.lancamento.observacao}"/>
+
+            <h:commandButton id="cadastrarItem" value="Cadastrar" action="#{lancamentoBean.adicionarLancamento}"/>
+
+        </h:panelGrid>
+
+    </h:form>
+
+</h:body>
+</html>

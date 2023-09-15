@@ -7,7 +7,8 @@ import java.util.Date;
 public class Lancamento {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "oid_lancamento")
     private Long oid;
 
     @Column(name = "dt_inicial")

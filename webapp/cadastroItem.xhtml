@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>LINCROS</title>
+</h:head>
+
+<h:link outcome="home.xhtml">Voltar</h:link>
+
+<h:body>
+
+    <h:form id="formHome">
+
+        <h3>Cadastro de itens</h3>
+
+        <h:panelGrid column="2">
+
+            <h:outputLabel value="Descrição do item"/>
+            <h:inputText value="#{itemBean.item.descricao}"/>
+
+            <h:outputLabel value="Valor"/>
+            <h:inputText value="#{itemBean.item.valor}"/>
+
+            <h:commandButton id="cadastrarItem" value="Cadastrar" action="#{itemBean.adicionarItem}"/>
+
+        </h:panelGrid>
+
+        <h:dataTable value="#{itemBean.itens}" var="item" border="1">
+
+            <f:facet name="header">
+                Itens cadastrados
+            </f:facet>
+
+            <h:column>
+                <f:facet name="header">OID</f:facet>
+                <h:outputText value="#{item.oid}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Valor</f:facet>
+                <h:outputText value="#{item.valor}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Descrição</f:facet>
+                <h:outputText value="#{item.descricao}"/>
+            </h:column>
+
+        </h:dataTable>
+
+    </h:form>
+
+</h:body>
+</html>

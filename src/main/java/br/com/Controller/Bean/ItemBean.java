@@ -1,21 +1,33 @@
 package br.com.Controller.Bean;
 
-
 import br.com.Model.DAO.GenericDAO;
 import br.com.Model.Entity.Item;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import java.util.ArrayList;
+import java.util.List;
 
 @ViewScoped
 @ManagedBean(name = "itemBean")
-public class ItemBean<DaoGeneric> {
+public class ItemBean {
 
     private final Item item = new Item();
     private final GenericDAO<Item> genericDAO = new GenericDAO<>();
+    private List<Item> itens = new ArrayList<Item>();
 
-    public void adicionarItem(Item item) {
-        genericDAO.adicionar(item);
+    public String adicionarItem() {
+        genericDAO.add(item);
+        return "cadastroItem.xhtml";
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public List<Item> getItens() {
+        List<Item> itens = genericDAO.findAll(Item.class);
+        return itens;
     }
 
 }

@@ -4,11 +4,12 @@ import br.com.Model.Util.JPAUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import java.util.List;
 
 public class GenericDAO<E> {
 
-    public void adicionar(E entity) {
-        EntityManager entityManager = JPAUtil.getEntityManager();
+    public E add(E entity) {
+        EntityManager entityManager = JPAUtil.getEnityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
 
@@ -16,6 +17,15 @@ public class GenericDAO<E> {
 
         entityTransaction.commit();
         entityManager.close();
+
+        return e;
+    }
+
+    public List<E> findAll(Class<E> entity) {
+        EntityManager entityManager = JPAUtil.getEnityManager();
+
+        List<E> lista = entityManager.createQuery("from " + entity.getName()).getResultList();
+        return lista;
     }
 
 }
