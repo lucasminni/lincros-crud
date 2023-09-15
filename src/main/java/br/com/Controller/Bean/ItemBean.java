@@ -4,6 +4,7 @@ import br.com.Model.DAO.GenericDAO;
 import br.com.Model.Entity.Item;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,8 @@ public class ItemBean {
 
     public String adicionarItem() {
         genericDAO.add(item);
-        return "cadastroItem.xhtml";
+        limparFormulario();
+        return "/cadastroItem.jsf";
     }
 
     public Item getItem() {
@@ -28,6 +30,11 @@ public class ItemBean {
     public List<Item> getItens() {
         List<Item> itens = genericDAO.findAll(Item.class);
         return itens;
+    }
+
+    public Item limparFormulario() {
+        Item item = new Item();
+        return item;
     }
 
 }

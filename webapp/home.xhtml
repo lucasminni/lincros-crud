@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
     <title>LINCROS</title>
@@ -14,17 +15,19 @@
 
     <h:form id="formHome">
 
-        <h3>Bem-vindo! =)</h3>
+        <p:outputLabel value="Seja bem-vindo! =)"/>
 
-        <h:panelGrid column="1">
+        <p/>
 
-            <h:link outcome="cadastroItem.xhtml">Cadastro de item</h:link>
+        <p:panelGrid column="1">
 
-            <br/>
+            <p:button outcome="/cadastroItem.jsf" value="Cadastro de item"/>
 
-            <h:link outcome="cadastroLancamento.xhtml">Cadastro de lançamentos</h:link>
+            <p/>
 
-        </h:panelGrid>
+            <p:button outcome="/cadastroLancamento.jsf" value="Cadastro de lançamentos"/>
+
+        </p:panelGrid>
 
     </h:form>
 

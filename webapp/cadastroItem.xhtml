@@ -4,20 +4,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
 <h:head>
     <title>LINCROS</title>
 </h:head>
 
-<h:link outcome="home.xhtml">Voltar</h:link>
+<p:button outcome="/home.jsf" value="Voltar"/>
+
+<p/>
 
 <h:body>
 
     <h:form id="formHome">
 
-        <h3>Cadastro de itens</h3>
+        <p:outputLabel value="Cadastro de itens"/>
 
-        <h:panelGrid column="2">
+        <p:panelGrid columns="2">
 
             <h:outputLabel value="Descrição do item"/>
             <h:inputText value="#{itemBean.item.descricao}"/>
@@ -25,32 +29,36 @@
             <h:outputLabel value="Valor"/>
             <h:inputText value="#{itemBean.item.valor}"/>
 
-            <h:commandButton id="cadastrarItem" value="Cadastrar" action="#{itemBean.adicionarItem}"/>
+        </p:panelGrid>
 
-        </h:panelGrid>
+        <p/>
 
-        <h:dataTable value="#{itemBean.itens}" var="item" border="1">
+        <p:commandButton value="Cadastrar" action="#{itemBean.adicionarItem}" update="@form"/>
+
+        <p/>
+
+        <p:dataTable value="#{itemBean.itens}" var="item" border="1">
 
             <f:facet name="header">
                 Itens cadastrados
             </f:facet>
 
-            <h:column>
+            <p:column>
                 <f:facet name="header">OID</f:facet>
-                <h:outputText value="#{item.oid}"/>
-            </h:column>
+                <p:outputLabel value="#{item.oid}"/>
+            </p:column>
 
-            <h:column>
-                <f:facet name="header">Valor</f:facet>
-                <h:outputText value="#{item.valor}"/>
-            </h:column>
-
-            <h:column>
+            <p:column>
                 <f:facet name="header">Descrição</f:facet>
-                <h:outputText value="#{item.descricao}"/>
-            </h:column>
+                <p:outputLabel value="#{item.descricao}"/>
+            </p:column>
 
-        </h:dataTable>
+            <p:column>
+                <f:facet name="header">Valor</f:facet>
+                <p:outputLabel value="#{item.valor}"/>
+            </p:column>
+
+        </p:dataTable>
 
     </h:form>
 
