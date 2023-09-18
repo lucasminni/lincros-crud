@@ -1,5 +1,6 @@
 package br.com.Model.DAO;
 
+import br.com.Model.Entity.Item;
 import br.com.Model.Util.JPAUtil;
 
 import javax.persistence.EntityManager;
@@ -28,4 +29,9 @@ public class GenericDAO<E> {
         return lista;
     }
 
+    public Item findById(Long oid) {
+        EntityManager entityManager = JPAUtil.getEnityManager();
+
+        return entityManager.find(Item.class, oid);
+    }
 }

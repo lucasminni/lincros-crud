@@ -11,28 +11,94 @@
     <title>LINCROS</title>
 </h:head>
 
-<h:link outcome="home.xhtml">Voltar</h:link>
+<p:button outcome="/home.jsf" value="Voltar"/>
+
+<p/>
 
 <h:body>
 
     <h:form id="formHomeCadastrar">
 
-        <h3>Cadastro de lançamentos</h3>
+        <p:panel header="Lançamentos">
 
-        <h:panelGrid column="2">
+            <p:panelGrid columns="2">
 
-            <h:outputLabel value="Data inicial"/>
-            <h:inputText value="#{lancamentoBean.lancamento.dataInicial}"/>
+                <p:outputLabel for="btDataInicial" value="Data inicial:"/>
+                <p:calendar id="btDataInicial" value="#{lancamentoBean.lancamento.dataInicial}" showOn="button"/>
 
-            <h:outputLabel value="Data final"/>
-            <h:inputText value="#{lancamentoBean.lancamento.dataFinal}"/>
+                <p:outputLabel for="btDataFinal" value="Data final"/>
+                <p:calendar id="btDataFinal" value="#{lancamentoBean.lancamento.dataFinal}" showOn="button"/>
 
-            <h:outputLabel value="Observações"/>
-            <h:inputTextarea value="#{lancamentoBean.lancamento.observacao}"/>
+                <p:outputLabel value="Observações"/>
+                <p:inputTextarea value="#{lancamentoBean.lancamento.observacao}"/>
 
-            <h:commandButton id="cadastrarItem" value="Cadastrar" action="#{lancamentoBean.adicionarLancamento}"/>
+            </p:panelGrid>
 
-        </h:panelGrid>
+        </p:panel>
+
+        <p/>
+
+        <p:commandButton value="Selecionar itens" onclick="PF('dlgItens').show();" type="button"/>
+
+        <p:dialog header="Itens cadastrados" widgetVar="dlgItens" draggable="false" resizable="false">
+
+            <p:selectManyCheckbox value="#{lancamentoBean.oidItensSelecionados}" layout="responsive" columns="1">
+
+                <f:selectItems value="#{itemBean.itens}" var="item" itemLabel="#{item.descricao}"
+                               itemValue="#{item.oid}"/>
+
+            </p:selectManyCheckbox>
+
+
+            <p/>
+
+            <p:commandButton value="Selecionar" action="#{lancamentoBean.selecionarOidsESomarValoresItens}" update="
+                             itensSelecionadosTable valorTotal"/>
+
+        </p:dialog>
+
+        <p/>
+
+        <p:panelGrid columns="2">
+            <p:outputLabel value="Valor total"/>
+            <p:inputNumber id="valorTotal" value="#{lancamentoBean.lancamento.valorTotal}" readonly="true"
+                           symbol="R$ "/>
+        </p:panelGrid>
+
+        <p/>
+
+        <p:dataTable var="item" value="#{lancamentoBean.itensSelecionados}" id="itensSelecionadosTable">
+
+            <p:column headerText="id">
+                <h:outputText value="#{item.oid}"/>
+            </p:column>
+
+            <p:column headerText="Item">
+                <h:outputText value="#{item.descricao}"/>
+            </p:column>
+
+            <p:column headerText="Quantidade">
+                <p:inputText value="0"/> <!--Desenvolver: valor default = 1 e ao editar, recalcular o valor-->
+            </p:column>
+
+            <p:column headerText="Valor unitário">
+                <p:inputNumber value="#{item.valor}" symbol="R$ "/>
+            </p:column>
+
+            <p:column headerText="Valor">
+                <p:inputNumber value="0" symbol="R$ "/> <!--Desenvolver: quantidade * valor-->
+            </p:column>
+
+            <p:column headerText="Remover">
+                <p:commandButton value="Remover" action="#{lancamentoBean.removerItem(item)}"
+                                 update="itensSelecionadosTable"/> <!--Atualizar o valor total quando remover um item-->
+            </p:column>
+
+        </p:dataTable>
+
+        <p/>
+
+        <p:commandButton value="Cadastrar" action="#{lancamentoBean.adicionarLancamento}" update="@form"/>
 
     </h:form>
 

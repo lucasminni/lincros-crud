@@ -4,9 +4,7 @@ import br.com.Model.DAO.GenericDAO;
 import br.com.Model.Entity.Item;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
-import java.util.ArrayList;
 import java.util.List;
 
 @ViewScoped
@@ -15,13 +13,6 @@ public class ItemBean {
 
     private final Item item = new Item();
     private final GenericDAO<Item> genericDAO = new GenericDAO<>();
-    private List<Item> itens = new ArrayList<Item>();
-
-    public String adicionarItem() {
-        genericDAO.add(item);
-        limparFormulario();
-        return "/cadastroItem.jsf";
-    }
 
     public Item getItem() {
         return item;
@@ -32,9 +23,8 @@ public class ItemBean {
         return itens;
     }
 
-    public Item limparFormulario() {
-        Item item = new Item();
-        return item;
+    public String adicionarItem() {
+        genericDAO.add(item);
+        return "/cadastroItem.jsf";
     }
-
 }

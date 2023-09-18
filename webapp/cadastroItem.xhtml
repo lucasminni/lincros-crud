@@ -19,17 +19,17 @@
 
     <h:form id="formHome">
 
-        <p:outputLabel value="Cadastro de itens"/>
+        <p:panel header="Cadastro de itens">
+            <p:panelGrid columns="2">
 
-        <p:panelGrid columns="2">
+                <p:outputLabel value="Descrição do item"/>
+                <p:inputText value="#{itemBean.item.descricao}"/>
 
-            <h:outputLabel value="Descrição do item"/>
-            <h:inputText value="#{itemBean.item.descricao}"/>
+                <p:outputLabel value="Valor"/>
+                <p:inputText value="#{itemBean.item.valor}"/>
 
-            <h:outputLabel value="Valor"/>
-            <h:inputText value="#{itemBean.item.valor}"/>
-
-        </p:panelGrid>
+            </p:panelGrid>
+        </p:panel>
 
         <p/>
 

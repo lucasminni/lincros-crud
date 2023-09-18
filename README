@@ -36,7 +36,7 @@ Valor:
 [R$ 000.000,00]
 
 6.b - Criar uma CRUD para cadastrar lançamentos, podendo informar as datas inicial e final (a mascara das datas serão distintas), e o campo de observacao.
-O campo oid deve ser populado através de uma sequence. Deve-se ainda na mesma tela, permitir vincular N itens, criando assim uma mestre X detalhe.
+O campo oid deve ser populado através de uma sequence. Deve-se ainda na mesma tela, pecurmitir vinlar N itens, criando assim uma mestre X detalhe.
 O campo total é somente leitura, e deve ser populado com o valor total dos itens vinculados ao lançamento. Exemplo:
 
 Oid:
